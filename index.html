@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tap & Relax</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div id="game-container">
+        <header>
+            <h1>Tap & Relax</h1>
+            <div id="score-display">Punti: <span id="score">0</span></div>
+            <div id="pps-display">Punti per secondo: <span id="pps">0</span></div>
+        </header>
+
+        <main>
+            <div id="click-area">
+                <button id="tap-button">
+                    TAP!
+                </button>
+            </div>
+        </main>
+
+        <footer>
+            <h2>Potenziamenti</h2>
+            <div class="upgrades-container">
+                <button id="upgrade-click" class="upgrade-btn">
+                    +1 per Click (Costo: <span id="cost-click">10</span>)
+                </button>
+                <button id="upgrade-auto" class="upgrade-btn">
+                    +1 Auto al secondo (Costo: <span id="cost-auto">50</span>)
+                </button>
+            </div>
+            <button id="reset-button">Reset Progressi</button>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                .then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                })
+                .catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
